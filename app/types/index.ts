@@ -18,7 +18,6 @@ export interface Event {
 export interface Filter {
   id: number;
   name: string;
-  imgUrl: any;
 }
 
 export interface Match {

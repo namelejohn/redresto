@@ -16,7 +16,7 @@ interface HomeScreenProps {
 
 const ProductListScreen: React.FC<HomeScreenProps> = props => {
   const {productStore} = useStore();
-  const {loadProducts, filteredProducts, activeFilter, setFilter} =
+  const {loadProducts, filteredProducts, activeFilter, setFilter, setSearch} =
     productStore;
 
   useEffect(() => {
@@ -43,6 +43,7 @@ const ProductListScreen: React.FC<HomeScreenProps> = props => {
             placeholderTextColor={'#4E0404'}
             placeholder={'SEARCH'}
             style={{width: '90%', fontSize: 16, fontWeight: 600}}
+            onChangeText={setSearch}
           />
           <Image
             source={require('../assets/search.png')}

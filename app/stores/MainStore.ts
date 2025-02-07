@@ -51,16 +51,36 @@ class MainStore {
     this.selectedItem = item;
   };
 
-  private applyFilter = () => {
-    if (this.activeFilter.name.toLowerCase() === 'all') {
-      this.filteredProducts = mockProducts;
-      return;
+  setSearch = (query: string) => {
+    this.search = query;
+    this.applyFilterAndSearch();
+  };
+
+  private applyFilterAndSearch = () => {
+    let filtered = this.products;
+
+    // Применяем фильтр по категории
+    if (this.activeFilter.name.toLowerCase() !== 'all') {
+      filtered = filtered.filter(
+        product =>
+          product.category.toLowerCase() ===
+          this.activeFilter.name.toLowerCase(),
+      );
     }
-    this.search = '';
-    this.filteredProducts = mockProducts.filter(
-      product =>
-        product.category.toLowerCase() === this.activeFilter.name.toLowerCase(),
-    );
+
+    // Применяем поиск
+    if (this.search.trim()) {
+      const searchQuery = this.search.toLowerCase().trim();
+      filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchQuery),
+      );
+    }
+
+    this.filteredProducts = filtered;
+  };
+
+  private applyFilter = () => {
+    this.applyFilterAndSearch();
   };
 
   handlePlus = (product: Product) => {

@@ -170,22 +170,18 @@ export const filterData: Filter[] = [
   {
     id: 1,
     name: 'ALL',
-    imgUrl: require('../assets/filter1.png'),
   },
   {
     id: 2,
     name: 'DISH',
-    imgUrl: require('../assets/filter2.png'),
   },
   {
     id: 3,
     name: 'SALADS',
-    imgUrl: require('../assets/filter3.png'),
   },
   {
     id: 4,
     name: 'DRINKS',
-    imgUrl: require('../assets/filter4.png'),
   },
 ];
 
